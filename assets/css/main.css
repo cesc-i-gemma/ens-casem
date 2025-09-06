@@ -1717,3 +1717,10 @@ input, select, textarea {
 			opacity: 0;
 		}
 
+h4.label-inline {
+  margin-bottom: 0.5rem; /* redueix l’espai sota el títol */
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 1rem;
+}

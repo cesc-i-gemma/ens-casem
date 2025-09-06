@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//LaTevaWeb//AddToCalendar//CA
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:G&C
+DTSTAMP:20250906T100000Z
+DTSTART;VALUE=DATE:20260606
+DTEND;VALUE=DATE:20260607
+SUMMARY:Casament Gemma i Cesc 💍❤
+DESCRIPTION:Per més informació sobre el casament, pots accedir a la nostra pàgina web: https://cesc-i-gemma.github.io/ens-casem
+LOCATION:Heretat Sabartès\, Carretera de Santa Oliva\, 43711 s/n\, Tarragona\, Espanya
+URL:https://cesc-i-gemma.github.io/ens-casem
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Recordatori: Casament Gemma i Cesc 💍❤ (30 dies abans)
+TRIGGER:20260507T103000Z
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Recordatori: Casament Gemma i Cesc 💍❤ (1 dia abans)
+TRIGGER:20260605T103000Z
+END:VALARM
+END:VEVENT
+END:VCALENDAR
