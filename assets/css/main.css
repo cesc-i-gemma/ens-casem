@@ -1644,7 +1644,9 @@ input, select, textarea {
   display: flex;
   gap: 0.9rem;
   justify-content: center;
-  flex-wrap: wrap;
+  /*flex-wrap: wrap;*/
+  flex-wrap: nowrap; /* 🔒 Evita que facin salt de línia */
+  overflow-x: auto;  /* 🔑 Si algun cop és massa estret, permet scroll horitzontal */
 }
 
 .countdown .time-box {
@@ -1724,3 +1726,4 @@ h4.label-inline {
   font-weight: 600;
   font-size: 1rem;
 }
+
