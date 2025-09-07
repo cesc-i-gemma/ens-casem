@@ -52,8 +52,8 @@
 						<nav>
 							<ul>
 								<li><a href="#elnostredia">El nostre dia</a></li>
-								<li><a href="#work">RSVP</a></li>
-								<li><a href="#about">Q&A</a></li>
+								<li><a href="#rsvp">RSVP</a></li>
+								<li><a href="#qa">Q&A</a></li>
 								<li><a href="#contact">El dia D</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
@@ -101,19 +101,43 @@
 								<!-- aquí per fer això ultim ens ha donat problemes i hem fet lopcio rapida i ara el seguent paragraf no tindrà l'espai que li toca, però com que no volem afegir res més, no ho arreglem -->
 							</article>
 
-						<!-- Work -->
-							<article id="work">
-								<h2 class="major">Work</h2>
+						<!-- RSVP -->
+							<article id="rsvp">
+								<h2 class="major">RSVP</h2>
 								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
-								<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
-							</article>
+								 <div class="tally-wrap">
+									<iframe
+									data-tally-src="https://tally.so/embed/npgbzy?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
+									loading="lazy"
+									width="100%"
+									height="920"
+									frameborder="0"
+									marginheight="0"
+									marginwidth="0"
+									title="Invitation to our wedding">
+									</iframe>
+								</div>
+															</article>
 
-						<!-- About -->
-							<article id="about">
-								<h2 class="major">About</h2>
+						<!-- Q&A -->
+							<article id="qa">
+								<h2 class="major">Q&A</h2>
 								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
+								<div class="chat-card">
+									<div id="chat-log" class="chat-log" aria-live="polite"></div>
+
+									<form id="chat-form" class="chat-input" autocomplete="off">
+									<input id="chat-q" type="text" placeholder="Escriu la teva pregunta..." aria-label="Pregunta" />
+									<button type="quick-hints">Enviar</button>
+									</form>
+
+									<div class="quick-hints">
+									<button data-q="Quin és l'horari?">Horari</button>
+									<button data-q="Com hi arribo?">Transport</button>
+									<button data-q="Hi ha aparcament?">Aparcament</button>
+									<button data-q="Hi ha dress code?">Dress code</button>
+									</div>
+								</div>
 							</article>
 
 						<!-- Contact -->
@@ -455,6 +479,147 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					const timer = setInterval(update, 1000);
 				})();
 				</script>
+
+				<script>
+					var d=document,w="https://tally.so/widgets/embed.js",v=function(){
+						if(typeof Tally!=="undefined"){ Tally.loadEmbeds(); }
+						else { d.querySelectorAll('iframe[data-tally-src]:not([src])').forEach(function(e){ e.src = e.dataset.tallySrc; }); }
+					};
+					if(typeof Tally!=="undefined") v();
+					else if(d.querySelector('script[src="'+w+'"]')==null){
+						var s=d.createElement("script"); s.src=w; s.onload=v; s.onerror=v; d.body.appendChild(s);
+					}
+				</script>
+
+				<script>
+				/* ===== Q&A predefinides (modifica lliurement) ===== */
+				const FAQ = [
+				{ q: ["quin és l horari","horari","a quina hora comença","a quina hora es la cerimonia","agenda"],
+					a: "La cerimònia comença a les 13:00 i el banquet tot seguit. Recomanem arribar 30 min abans." },
+				{ q: ["adreça","ubicacio","on es","com hi arribo","transport"],
+					a: "L'esdeveniment és a Heretat Sabartès (Tarragona). Hi pots arribar en cotxe; també hi ha taxi a les poblacions properes." },
+				{ q: ["aparcament","parking","hi ha lloc per aparcar"],
+					a: "Sí, hi ha aparcament gratuït dins del recinte. Seguiu la senyalització del personal." },
+				{ q: ["dress code","etiqueta","com haig d anar vestit","vestimenta"],
+					a: "Dress code: còmode i elegant d'estiu. Eviteu el blanc per no trepitjar la núvia ;)" },
+				{ q: ["regal","llista de noces","detall"],
+					a: "El vostre millor regal és acompanyar-nos! Si voleu fer un detall, trobareu la informació a la invitació." },
+				{ q: ["menu","al·lèrgies","intolerancies","vegetarià"],
+					a: "Hi ha opcions vegetarianes i per intoleràncies. Indiqueu-ho a l'RSVP i ho preparem." },
+				{ q: ["allotjament","hotel","dormir"],
+					a: "Us recomanem allotjar-vos a la zona del Vendrell / El Montmell. Tenim un llistat d'hotels suggerits a la web." },
+				];
+
+				/* ===== utilitats ===== */
+				const norm = s => s.toLowerCase()
+				.normalize('NFD').replace(/\p{Diacritic}/gu,'')
+				.replace(/[^\p{Letter}\p{Number}\s]/gu,' ')
+				.replace(/\s+/g,' ').trim();
+
+				/* petit scoring per paraules clau */
+				function bestMatch(userText){
+				const u = norm(userText);
+				if (!u) return {score:0, answer:null, alts:[]};
+
+				const uTokens = new Set(u.split(' '));
+				let best = {score:0, answer:null, index:-1};
+
+				FAQ.forEach((item, idx) => {
+					let localBest = 0;
+					item.q.forEach(pattern => {
+					const p = norm(pattern);
+					const tokens = new Set(p.split(' '));
+					let hit = 0;
+					tokens.forEach(t => { if (uTokens.has(t)) hit++; });
+					localBest = Math.max(localBest, hit / Math.max(tokens.size,1));
+					});
+					if (localBest > best.score) best = {score: localBest, answer: item.a, index: idx};
+				});
+
+				// alternatives ordenades per score
+				const alts = FAQ.map((item, idx) => {
+					let s = 0;
+					item.q.forEach(pat => {
+					const tokens = new Set(norm(pat).split(' '));
+					let hit = 0; tokens.forEach(t => { if (uTokens.has(t)) hit++; });
+					s = Math.max(s, hit / Math.max(tokens.size,1));
+					});
+					return {idx, s, label: item.q[0]};
+				}).sort((a,b)=>b.s-a.s).slice(0,3);
+
+				return {...best, alts};
+				}
+
+				/* ===== UI del xat ===== */
+				(function(){
+				const log = document.getElementById('chat-log');
+				const form = document.getElementById('chat-form');
+				const input = document.getElementById('chat-q');
+
+				function addMsg(text, who='bot'){
+					const div = document.createElement('div');
+					div.className = 'msg ' + who;
+					div.textContent = text;
+					log.appendChild(div);
+					log.scrollTop = log.scrollHeight;
+				}
+
+				function addSuggestions(list){
+					const div = document.createElement('div');
+					div.className = 'msg bot';
+					const wrap = document.createElement('div');
+					wrap.style.display = 'flex'; wrap.style.flexWrap='wrap'; wrap.style.gap='.4rem';
+					list.forEach(s => {
+					const b = document.createElement('button');
+					b.type='button';
+					b.textContent = s;
+					b.style.padding='.35rem .6rem';
+					b.style.border='1px solid rgba(255,255,255,.25)';
+					b.style.background='transparent';
+					b.style.color='inherit';
+					b.style.borderRadius='.45rem';
+					b.onclick = () => { input.value = s; form.dispatchEvent(new Event('submit')); };
+					wrap.appendChild(b);
+					});
+					div.appendChild(wrap);
+					log.appendChild(div);
+					log.scrollTop = log.scrollHeight;
+				}
+
+				// missatge de benvinguda
+				addMsg("Hola! Sóc el Q&A de l'esdeveniment. Pregunta'm sobre horaris, transport, aparcament, dress code, menú, etc.");
+
+				form.addEventListener('submit', (e)=>{
+					e.preventDefault();
+					const q = input.value.trim();
+					if (!q) return;
+					addMsg(q, 'user');
+					input.value = '';
+
+					const {score, answer, alts} = bestMatch(q);
+					if (score >= 0.5 && answer){
+					addMsg(answer, 'bot');
+					} else if (answer){
+					addMsg(answer, 'bot');
+					const labels = alts.map(x => FAQ[x.idx].q[0]).filter((v,i,a)=>a.indexOf(v)===i);
+					addSuggestions(labels);
+					} else {
+					addMsg("No n'estic segur. Pots provar amb: ", 'bot');
+					const labels = alts.map(x => FAQ[x.idx].q[0]).filter((v,i,a)=>a.indexOf(v)===i);
+					addSuggestions(labels);
+					}
+				});
+
+				// botons ràpids
+				document.querySelectorAll('.quick-hints [data-q]').forEach(b=>{
+					b.addEventListener('click', ()=>{
+					input.value = b.dataset.q;
+					form.dispatchEvent(new Event('submit'));
+					});
+				});
+				})();
+				</script>
+
 
 
 	</body>
