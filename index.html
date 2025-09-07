@@ -52,8 +52,8 @@
 						<nav>
 							<ul>
 								<li><a href="#elnostredia">El nostre dia</a></li>
-								<li><a href="#rsvp">RSVP</a></li>
-								<li><a href="#qa">Q&A</a></li>
+								<li><a href="#rsvp">Assistiràs?</a></li>
+								<li><a href="#qa">Chat GpC</a></li>
 								<li><a href="#contact">El dia D</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
@@ -75,11 +75,10 @@
   								Android / Windows</a> o a <a href="ics/casamentGC.ics" type="text/calendar">iOS</a> segons el teu sistema operatiu.</p>
 
 								<div style="margin-bottom:1rem;">
-<h4 class="label-inline" style="margin-bottom:1rem;">TIMMING</h4>
-<span class="image main" style="margin-top:0;">
-  <img src="images/timeline.png" alt="" />
-</span>
-
+									<h4 class="label-inline" style="margin-bottom:1rem;">TIMMING</h4>
+									<span class="image main" style="margin-top:0;">
+									<img src="images/timeline.png" alt="" />
+									</span>
 								</div>
 
 
@@ -98,13 +97,15 @@
 								<li><strong>Autocar:</strong> si prefereixes <em>despreocupar-te</em> de conduir i amortitzar la barra lliure, pots aprofitar el servei d’autocar que sortirà de Francesc Macià el mateix dissabte a les 12h. (Ho podràs indicar després al formulari d’assistència, a l’apartat RSVP).</li>
 								</ul>								
 								</p>
+								<span class="image main" style="margin-top:0;">
+									<img src="images/autocar.png" alt="" />
 								<!-- aquí per fer això ultim ens ha donat problemes i hem fet lopcio rapida i ara el seguent paragraf no tindrà l'espai que li toca, però com que no volem afegir res més, no ho arreglem -->
 							</article>
 
 						<!-- RSVP -->
 							<article id="rsvp">
-								<h2 class="major">RSVP</h2>
-								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+								<h2 class="major">Confirma assistència</h2>
+								<span class="image main"><img src="images/party.jpg" alt="" /></span>
 								 <div class="tally-wrap">
 									<iframe
 									data-tally-src="https://tally.so/embed/npgbzy?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
@@ -121,8 +122,8 @@
 
 						<!-- Q&A -->
 							<article id="qa">
-								<h2 class="major">Q&A</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+								<h2 class="major">Chat GpC</h2>
+								<span class="image main"><img src="images/toscana2.jpg" alt="" /></span>
 								<div class="chat-card">
 									<div id="chat-log" class="chat-log" aria-live="polite"></div>
 
@@ -136,6 +137,7 @@
 									<button data-q="Com hi arribo?">Transport</button>
 									<button data-q="Hi ha aparcament?">Aparcament</button>
 									<button data-q="Hi ha dress code?">Dress code</button>
+									<button data-q="Hi ha dress code?">Regal</button>
 									</div>
 								</div>
 							</article>
@@ -501,7 +503,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				{ q: ["aparcament","parking","hi ha lloc per aparcar"],
 					a: "Sí, hi ha aparcament gratuït dins del recinte. Seguiu la senyalització del personal." },
 				{ q: ["dress code","etiqueta","com haig d anar vestit","vestimenta"],
-					a: "Dress code: còmode i elegant d'estiu. Eviteu el blanc per no trepitjar la núvia ;)" },
+					a: "Al ser un casament de dia, el protocol indica que elles han de portar un vestit midi i ells un vestit d’home de color blau marí, beige o gris i corbata o llacet; però els nuvis diuen que pots anar de llarg o cocktail si ho prefereixes i amb el color que sentis que més t’afavoreix. <br> Donat que la gamma de colors és molt àmplia i que el Cesc és molt del Barça, el blanc i tots aquells tan clars que es puguin confondre, el reservem per només la Gemma ;)" },
 				{ q: ["regal","llista de noces","detall"],
 					a: "El vostre millor regal és acompanyar-nos! Si voleu fer un detall, trobareu la informació a la invitació." },
 				{ q: ["menu","al·lèrgies","intolerancies","vegetarià"],
@@ -587,7 +589,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				}
 
 				// missatge de benvinguda
-				addMsg("Hola! Sóc el Q&A de l'esdeveniment. Pregunta'm sobre horaris, transport, aparcament, dress code, menú, etc.");
+				addMsg("Hola! Sóc el Chat GpC. Pregunta'm el que vulguis sobre el casament de la Gemma i el Cesc (horaris, transport, aparcament, dress code, menú...)");
 
 				form.addEventListener('submit', (e)=>{
 					e.preventDefault();
@@ -604,9 +606,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					const labels = alts.map(x => FAQ[x.idx].q[0]).filter((v,i,a)=>a.indexOf(v)===i);
 					addSuggestions(labels);
 					} else {
-					addMsg("No n'estic segur. Pots provar amb: ", 'bot');
+					addMsg("Ostres, aquí m'has enganxat, trapella! Et puc respondre preguntes sobre els temes que tens a sota el xat o alguna d'aquestes:", 'bot');
 					const labels = alts.map(x => FAQ[x.idx].q[0]).filter((v,i,a)=>a.indexOf(v)===i);
 					addSuggestions(labels);
+					addMsg(" i sinó pots preguntar-ho directament als nuvis (ella és encantadora).", 'bot');
 					}
 				});
 
